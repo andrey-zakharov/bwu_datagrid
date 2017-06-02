@@ -182,10 +182,12 @@ class BwuDatagrid extends PolymerElement {
 
     if (_isAttached) {
       new async.Future(() {
-        _init();
-        render();
-        //_unveilElement();
-        _setupCompleter.complete();
+        if (_isAttached && !_setupCompleter.isCompleted) {
+          _init();
+          render();
+          //_unveilElement();
+          _setupCompleter.complete();
+        }
       });
     } else {
       _isPendingInit = true;
