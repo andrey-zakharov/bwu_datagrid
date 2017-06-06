@@ -1572,7 +1572,6 @@ class BwuDatagrid extends PolymerElement {
       resizeCanvas();
       _applyColumnWidths();
 
-      this.shadowRoot.append(_style);
       _handleScroll();
     }
   }
