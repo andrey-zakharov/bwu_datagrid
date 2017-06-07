@@ -1490,14 +1490,19 @@ class BwuDatagrid extends PolymerElement {
       if (col.sortAsc == null) {
         col.sortAsc = true;
       }
+
       var columnIndex = getColumnIndex(col.columnId);
       if (columnIndex != null) {
-        headerColumnEls[columnIndex] // TODO verify
-          ..classes.add("bwu-datagrid-header-column-sorted")
-          ..querySelector(".bwu-datagrid-sort-indicator").classes.add(
-              col.sortAsc
-                  ? "bwu-datagrid-sort-indicator-asc"
-                  : "bwu-datagrid-sort-indicator-desc");
+        var header = headerColumnEls[columnIndex]; // TODO verify
+        header.classes.add("bwu-datagrid-header-column-sorted");
+
+        var indicator = header.querySelector(".bwu-datagrid-sort-indicator");
+        if (indicator != null) {
+          indicator.classes.add(col.sortAsc
+              ? "bwu-datagrid-sort-indicator-asc"
+              : "bwu-datagrid-sort-indicator-desc"
+          );
+        }
       }
     });
   }
